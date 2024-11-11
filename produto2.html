@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camiseta Dryfit Verde</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .produto-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 50px;
+        }
+
+        .produto-imagem {
+            max-width: 50%;
+        }
+
+        .produto-imagem img {
+            width: 100%;
+            border: 2px solid #333;
+        }
+
+        .produto-detalhes {
+            max-width: 45%;
+        }
+
+        .produto-detalhes h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .produto-detalhes .preco-antigo {
+            text-decoration: line-through;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .produto-detalhes .preco-atual {
+            font-size: 28px;
+            font-weight: bold;
+            color: #f00;
+            margin-bottom: 20px;
+        }
+
+        .produto-detalhes p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .produto-detalhes .tamanhos label {
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .produto-detalhes .tamanhos select {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+        }
+
+        .produto-detalhes .botao-comprar {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #f00;
+            color: #fff;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .produto-detalhes .botao-comprar:hover {
+            background-color: #d00;
+        }
+
+        .produto-detalhes .parcelamento {
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .video-produto {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .video-produto video {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #333;
+        }
+
+        .recomendacoes {
+            padding: 50px;
+            text-align: center;
+            background-color: #111;
+        }
+
+        .recomendacoes h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .recomendacoes .swiper {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .recomendacoes .swiper-slide {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .recomendacoes .swiper-slide img {
+            max-width: 100%;
+            border: 2px solid #333;
+        }
+
+        .recomendacoes .swiper-slide h4 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Camiseta Dryfit Verde</h1>
+    </header>
+
+    <section class="produto-container">
+        <div class="produto-imagem">
+            <img src="dryfit2.webp" alt="Camiseta Dryfit Verde">
+        </div>
+        <div class="produto-detalhes">
+            <h2>Camiseta Dryfit Verde</h2>
+            <p class="preco-antigo">De: R$ 129,90</p>
+            <p class="preco-atual">Por: R$ 54,90</p>
+            <p>Conforto, estilo e performance. A camiseta Dryfit Verde oferece o melhor em respirabilidade e leveza, ideal para o uso diário ou prática de atividades físicas.</p>
+            <div class="tamanhos">
+                <label for="tamanho">Escolha o tamanho:</label>
+                <select id="tamanho">
+                    <option value="P">P</option>
+                    <option value="M">M</option>
+                    <option value="G">G</option>
+                    <option value="GG">GG</option>
+                </select>
+            </div>
+            <button class="botao-comprar">Comprar Agora</button>
+            <p class="parcelamento">Em até 10x de R$ 5,49 sem juros</p>
+        </div>
+    </section>
+
+    <section class="video-produto">
+        <h3>Veja o produto em ação</h3>
+        <video controls>
+            <source src="dryfit-verde-video.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
+    </section>
+
+    <section class="recomendacoes">
+        <h3>Produtos Relacionados</h3>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="dryfit.webp" alt="Camiseta Dryfit Azul">
+                    <h4>Camiseta Dryfit Azul</h4>
+                </div>
+                <div class="swiper-slide">
+                    <img src="oversized.webp" alt="Camiseta Oversized Cinza">
+                    <h4>Camiseta Oversized Cinza</h4>
+                </div>
+                <div class="swiper-slide">
+                    <img src="oversized2.svg" alt="Camiseta Oversized Vermelha">
+                    <h4>Camiseta Oversized Vermelha</h4>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 CamisetaZ. Todos os direitos reservados.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            spaceBetween: 20,
+            slidesPerView: 3,
+            pagination: { el: '.swiper-pagination', type: 'bullets' },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamisetaZ</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo para o vídeo em miniatura */
+        #video-thumbnail {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: none; /* Inicialmente escondido */
+            cursor: pointer;
+        }
+
+        #video-thumbnail video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Quando o vídeo estiver em tela cheia */
+        #video-fullscreen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+
+        #video-fullscreen video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        #close-video {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  <header class="cabeçalho">
+    <div class="caixa">
+        <input type="checkbox" id="menu" class="caixa-botao">
+        <label for="menu">
+            <span class="cabeçalho-menu-amburguer caixa-imagem"></span>
+        </label>
+        <ul class="lista-menu">
+            <li class="lista-menu-titulo">Categorias</li>
+            <li class="lista-menu-itens"><a href="#" class="lista-menu-link">dryfit</a></li>
+            <li class="lista-menu-itens"><a href="#" class="lista-menu-link">oversized</a></li>
+            <li class="lista-menu-itens"><a href="#" class="lista-menu-link">Forza Horizon</a></li>
+            <li class="lista-menu-itens"><a href="#" class="lista-menu-link">Call of Duty</a></li>
+        </ul>
+        <a href="#"><img class="caixa-imagem" src="carrinho.svg" alt="Ícone de carrinho de compras"></a>
+    </div>
+   
+    <div class="caixa">
+      <a href="#"><img class="caixa-imagem" src="avatar.png" alt="Ícone de perfil de utilizador"></a>
+      <a href="#"><img class="caixa-imagem" src="casinha.png" alt="Ícone de página inicial"></a>
+      <a href="#"><img class="caixa-imagem" src="coraçao.png" alt="Ícone de favoritos"></a>
+    </div>
+  </header>
+  
+  <section class="banner">
+    <h2 class="banner-titulo">Você Já sabe por onde começar?</h2>
+    <p class="banner-texto">Saiba mais sobre sua camisa favorita</p>
+    <div class="banner-pesquisa-container">
+        <input type="search" class="banner-pesquisa" placeholder="Qual será seu estilo de hoje?">
+        <button class="banner-pesquisa-botão">Pesquisar</button>
+    </div>
+  </section>  
+  
+  <section class="carrossel">
+    <h2 class="carrossel-titulo">CONHEÇA NOSSAS CAMISAS</h2>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Produto 1 -->
+        <div class="swiper-slide">
+          <a href="produto1.html"> <!-- Link para a página de compra do produto 1 -->
+            <div class="card">
+              <img src="dryfit.webp" alt="Camiseta Dryfit Azul" class="card-imagem">
+              <div class="card-infos">
+                <h3 class="card-titulo">Camiseta Dryfit</h3>
+                <p class="card-preco">R$ 49,90</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Produto 2 -->
+        <div class="swiper-slide">
+          <a href="produto2.html"> <!-- Link para a página de compra do produto 2 -->
+            <div class="card">
+              <img src="dryfit2.webp" alt="Camiseta Dryfit Verde" class="card-imagem">
+              <div class="card-infos">
+                <h3 class="card-titulo">Camiseta Dryfit Verde</h3>
+                <p class="card-preco">R$ 54,90</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Produto 3 -->
+        <div class="swiper-slide">
+          <a href="produto3.html"> <!-- Link para a página de compra do produto 3 -->
+            <div class="card">
+              <img src="oversized.webp" alt="Camiseta Oversized Cinza" class="card-imagem">
+              <div class="card-infos">
+                <h3 class="card-titulo">Camiseta Oversized</h3>
+                <p class="card-preco">R$ 59,90</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <!-- Vídeo em miniatura (bolinha no canto inferior) -->
+  <div id="video-thumbnail">
+      <video id="video-element" muted autoplay loop></video>
+  </div>
+
+  <!-- Vídeo em tela cheia -->
+  <div id="video-fullscreen">
+      <span id="close-video">✖</span>
+      <video id="video-fullscreen-element" controls></video>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      spaceBetween: 10,
+      slidesPerView: 3,
+      pagination: { el: '.swiper-pagination', type: 'bullets' },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    // Mostrar vídeo em miniatura quando um produto for clicado
+    function mostrarVideo(videoSrc) {
+      const videoThumbnail = document.getElementById('video-thumbnail');
+      const videoElement = document.getElementById('video-element');
+      videoElement.src = videoSrc;
+      videoThumbnail.style.display = 'block';
+    }
+
+    // Expandir vídeo para tela cheia
+    const videoThumbnail = document.getElementById('video-thumbnail');
+    const videoFullscreen = document.getElementById('video-fullscreen');
+    const videoFullscreenElement = document.getElementById('video-fullscreen-element');
+
+    videoThumbnail.addEventListener('click', function() {
+      videoFullscreenElement.src = videoThumbnail.querySelector('video').src;
+      videoFullscreen.style.display = 'block';
+    });
+
+    // Fechar o vídeo em tela cheia
+    const closeVideoButton = document.getElementById('close-video');
+    closeVideoButton.addEventListener('click', function() {
+      videoFullscreen.style.display = 'none';
+      videoFullscreenElement.pause();
+    });
+  </script>
+
+  <section class="tópicos">
+    <h2 class="tópicos-titulo">Tópicos Visitados Recentemente</h2>
+    <ul class="tópicos-lista">
+      <li class="tópicos-item"><a href="#" class="tópicos-link">Oversized</a></li>
+      <li class="tópicos-item"><a href="#" class="tópicos-link">Dry Fit</a></li>
+    </ul>
+  </section>
+</body>
+</html>
