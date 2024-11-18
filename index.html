@@ -4,193 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CamisetaZ</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Estilo para o vídeo em miniatura */
-        #video-thumbnail {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+        :root {
+            --cor-fundo: #000;
+            --cor-texto: #fff;
+            --cor-card: #111;
+            --cor-hover: #222;
+            --cor-vermelho: #e63946;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: var(--cor-card);
+            border-bottom: 2px solid var(--cor-vermelho);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--cor-vermelho);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--cor-vermelho);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        .card {
+            position: relative;
+            background-color: var(--cor-card);
+            border-radius: 10px;
             overflow: hidden;
-            display: none; /* Inicialmente escondido */
-            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        #video-thumbnail video {
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .card img {
             width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
+            transition: opacity 0.3s ease;
         }
 
-        /* Quando o vídeo estiver em tela cheia */
-        #video-fullscreen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
+        .card:hover img {
+            opacity: 0.8;
         }
 
-        #video-fullscreen video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .card-info {
+            padding: 15px;
+            text-align: center;
         }
 
-        #close-video {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
+        .card-title {
+            font-size: 1.2rem;
+            color: var(--cor-texto);
+            margin: 0 0 10px;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: var(--cor-vermelho);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: var(--cor-texto);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: var(--cor-card);
+            color: var(--cor-texto);
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-  <header class="cabeçalho">
-    <div class="caixa">
-        <input type="checkbox" id="menu" class="caixa-botao">
-        <label for="menu">
-            <span class="cabeçalho-menu-amburguer caixa-imagem"></span>
-        </label>
-        <ul class="lista-menu">
-            <li class="lista-menu-titulo">Categorias</li>
-            <li class="lista-menu-itens"><a href="#" class="lista-menu-link">dryfit</a></li>
-            <li class="lista-menu-itens"><a href="#" class="lista-menu-link">oversized</a></li>
-            <li class="lista-menu-itens"><a href="#" class="lista-menu-link">Forza Horizon</a></li>
-            <li class="lista-menu-itens"><a href="#" class="lista-menu-link">Call of Duty</a></li>
-        </ul>
-        <a href="#"><img class="caixa-imagem" src="carrinho.svg" alt="Ícone de carrinho de compras"></a>
-    </div>
-   
-    <div class="caixa">
-      <a href="#"><img class="caixa-imagem" src="avatar.png" alt="Ícone de perfil de utilizador"></a>
-      <a href="#"><img class="caixa-imagem" src="casinha.png" alt="Ícone de página inicial"></a>
-      <a href="#"><img class="caixa-imagem" src="coraçao.png" alt="Ícone de favoritos"></a>
-    </div>
-  </header>
-  
-  <section class="banner">
-    <h2 class="banner-titulo">Você Já sabe por onde começar?</h2>
-    <p class="banner-texto">Saiba mais sobre sua camisa favorita</p>
-    <div class="banner-pesquisa-container">
-        <input type="search" class="banner-pesquisa" placeholder="Qual será seu estilo de hoje?">
-        <button class="banner-pesquisa-botão">Pesquisar</button>
-    </div>
-  </section>  
-  
-  <section class="carrossel">
-    <h2 class="carrossel-titulo">CONHEÇA NOSSAS CAMISAS</h2>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <!-- Produto 1 -->
-        <div class="swiper-slide">
-          <a href="produto1.html"> <!-- Link para a página de compra do produto 1 -->
+    <header>
+        <a href="#" class="logo">CAMISETAZ</a>
+        <nav>
+            <ul>
+                <li><a href="#dryfit">Dryfit</a></li>
+                <li><a href="#oversized">Oversized</a></li>
+                <li><a href="#forza-horizon">Forza Horizon</a></li>
+                <li><a href="#call-of-duty">Call of Duty</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Card 1 -->
             <div class="card">
-              <img src="dryfit.webp" alt="Camiseta Dryfit Azul" class="card-imagem">
-              <div class="card-infos">
-                <h3 class="card-titulo">Camiseta Dryfit</h3>
-                <p class="card-preco">R$ 49,90</p>
-              </div>
+                <a href="#dryfit">
+                    <img src="dryfit.webp" alt="Camiseta Dryfit">
+                    <div class="card-info">
+                        <h3 class="card-title">Camisetas Dryfit</h3>
+                        <span class="card-link">Ver mais</span>
+                    </div>
+                </a>
             </div>
-          </a>
-        </div>
-        <!-- Produto 2 -->
-        <div class="swiper-slide">
-          <a href="produto2.html"> <!-- Link para a página de compra do produto 2 -->
+
+            <!-- Card 2 -->
             <div class="card">
-              <img src="dryfit2.webp" alt="Camiseta Dryfit Verde" class="card-imagem">
-              <div class="card-infos">
-                <h3 class="card-titulo">Camiseta Dryfit Verde</h3>
-                <p class="card-preco">R$ 54,90</p>
-              </div>
+                <a href="#oversized">
+                    <img src="oversized.webp" alt="Camiseta Oversized">
+                    <div class="card-info">
+                        <h3 class="card-title">Camisetas Oversized</h3>
+                        <span class="card-link">Ver mais</span>
+                    </div>
+                </a>
             </div>
-          </a>
-        </div>
-        <!-- Produto 3 -->
-        <div class="swiper-slide">
-          <a href="produto3.html"> <!-- Link para a página de compra do produto 3 -->
+
+            <!-- Card 3 -->
             <div class="card">
-              <img src="oversized.webp" alt="Camiseta Oversized Cinza" class="card-imagem">
-              <div class="card-infos">
-                <h3 class="card-titulo">Camiseta Oversized</h3>
-                <p class="card-preco">R$ 59,90</p>
-              </div>
+                <a href="#forza-horizon">
+                    <img src="forza.webp" alt="Camiseta Forza Horizon">
+                    <div class="card-info">
+                        <h3 class="card-title">Forza Horizon</h3>
+                        <span class="card-link">Ver mais</span>
+                    </div>
+                </a>
             </div>
-          </a>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <a href="#call-of-duty">
+                    <img src="cod.webp" alt="Camiseta Call of Duty">
+                    <div class="card-info">
+                        <h3 class="card-title">Call of Duty</h3>
+                        <span class="card-link">Ver mais</span>
+                    </div>
+                </a>
+            </div>
         </div>
-      </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
-  </section>
+    </main>
 
-  <!-- Vídeo em miniatura (bolinha no canto inferior) -->
-  <div id="video-thumbnail">
-      <video id="video-element" muted autoplay loop></video>
-  </div>
-
-  <!-- Vídeo em tela cheia -->
-  <div id="video-fullscreen">
-      <span id="close-video">✖</span>
-      <video id="video-fullscreen-element" controls></video>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    const swiper = new Swiper('.swiper', {
-      spaceBetween: 10,
-      slidesPerView: 3,
-      pagination: { el: '.swiper-pagination', type: 'bullets' },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-
-    // Mostrar vídeo em miniatura quando um produto for clicado
-    function mostrarVideo(videoSrc) {
-      const videoThumbnail = document.getElementById('video-thumbnail');
-      const videoElement = document.getElementById('video-element');
-      videoElement.src = videoSrc;
-      videoThumbnail.style.display = 'block';
-    }
-
-    // Expandir vídeo para tela cheia
-    const videoThumbnail = document.getElementById('video-thumbnail');
-    const videoFullscreen = document.getElementById('video-fullscreen');
-    const videoFullscreenElement = document.getElementById('video-fullscreen-element');
-
-    videoThumbnail.addEventListener('click', function() {
-      videoFullscreenElement.src = videoThumbnail.querySelector('video').src;
-      videoFullscreen.style.display = 'block';
-    });
-
-    // Fechar o vídeo em tela cheia
-    const closeVideoButton = document.getElementById('close-video');
-    closeVideoButton.addEventListener('click', function() {
-      videoFullscreen.style.display = 'none';
-      videoFullscreenElement.pause();
-    });
-  </script>
-
-  <section class="tópicos">
-    <h2 class="tópicos-titulo">Tópicos Visitados Recentemente</h2>
-    <ul class="tópicos-lista">
-      <li class="tópicos-item"><a href="#" class="tópicos-link">Oversized</a></li>
-      <li class="tópicos-item"><a href="#" class="tópicos-link">Dry Fit</a></li>
-    </ul>
-  </section>
+    <footer>
+        &copy; 2024 CAMISETAZ - Todos os direitos reservados.
+    </footer>
 </body>
 </html>
-
